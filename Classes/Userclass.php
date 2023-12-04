@@ -13,8 +13,8 @@ class User {
         $this->email = $email;
         $this->password =$password;
          
-    $this-> storage_user =json_decode(file_get_contents($this->storage), true);
-    $this-> new_user=[
+        $this-> storage_user =json_decode(file_get_contents($this->storage), true);
+        $this-> new_user=[
         'username' => $this->username,
         'email' => $this->email,
         'password' => $this->password,
@@ -27,7 +27,6 @@ class User {
     
     public function checkFilevalue(){
         if(empty($this->username) || empty($this->email) || empty( $this->password)) {
-       // $this->error="all field are required please try again";
         return false;
         }
         return true;
@@ -38,7 +37,6 @@ class User {
         return true;
             }
         }
-    
     }
     public function insertUser(){
         if($this->usernameExits()==false){
@@ -50,7 +48,8 @@ class User {
                 return false;
             }
         }
-   
   }
+   
+    
 }
 ?>

@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $sessionHandler->setAuthUser($userName);
+    $sessionHandler->setAuthUser($username);
     $sessionHandler->setMessage('Successfully registered');
     header("Location:./userlist.php");
     exit();
