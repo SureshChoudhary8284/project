@@ -25,6 +25,7 @@ class SessionManager
     public function setAuthUser(string $userName): void
     {
         $_SESSION['username'] = $userName;
+        
     }
 
     public function getAuthUser(): ?string
