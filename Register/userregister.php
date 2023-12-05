@@ -59,6 +59,7 @@
         .password-toggle {
             cursor: pointer;
         }
+        
     </style>
 </head>
 
@@ -76,23 +77,26 @@
         <h2>Registration page</h2>
         <div>
             <label for="user">USERNAME :</label>
-            <input class="input_field" type="text" name="username" id="user" placeholder="Full Name" aria-label="Full Name">
+            <input class="input_field" type="text" name="username" id="user" placeholder="Full Name">
         </div><br>
 
         <div>
             <label for="email">EMAILID :</label>
-            <input class="input_field" type="email" name="email" id="email" placeholder="Email ID" aria-label="Email ID">
+            <input class="input_field" type="email" name="email" id="email" placeholder="Email ID">
         </div><br>
 
         <div>
             <label for="password">PASSWORD :</label>
-            <input class="input_field password-toggle" type="password" name="password" id="password" placeholder="Password" aria-label="Password">
+            <input class="input_field password-toggle" type="password" name="password" id="password" placeholder="Password">
         </div><br>
 
         <button class="submit_btn" type="submit" name="Registration" id="Registration" value="Registration">Registration</button>
+        
     </form>
 </body>
 
 
 </html>
+
+
 

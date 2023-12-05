@@ -1,10 +1,10 @@
 <?php
 
-class User {
+class RegisterUser {
     private $username;
     private $email;
     private $password; 
-    private $storage='user.json';
+    private $storage='data.json';
     private $storage_user;
     private $new_user;
 
@@ -19,27 +19,9 @@ class User {
         'email' => $this->email,
         'password' => $this->password,
         ];
-
-        if($this->checkFilevalue()){
-            $this->insertUser();
-        }
-    }
-    
-    public function checkFilevalue(){
-        if(empty($this->username) || empty($this->email) || empty( $this->password)) {
-        return false;
-        }
-        return true;
-    }
-    public function usernameExits(){
-        foreach($this->storage_user as $user){
-            if($this->username == $user['username']){
-        return true;
-            }
-        }
+        $this->insertUser();
     }
     public function insertUser(){
-        if($this->usernameExits()==false){
         array_push($this->storage_user, $this->new_user);
         if(file_put_contents($this->storage,json_encode($this->storage_user,JSON_PRETTY_PRINT))){
              return true;
@@ -49,7 +31,5 @@ class User {
             }
         }
   }
-   
-    
-}
+
 ?>
