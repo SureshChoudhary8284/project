@@ -1,14 +1,14 @@
 <?php
-session_start();
-require_once(dirname(__FILE__, 2) . '/bootstrap.php');
-
-if ($sessionHandler->hasMessage()) {
-    echo $sessionHandler->getMessage() . "<br>";
-    $sessionHandler->removeMessage();
-} else {
-    echo "No message available.<br>";
-}
+    session_start();
+      require_once(dirname(__FILE__, 2) . '/bootstrap.php');
+      if ($sessionHandler->hasMessage()) {
+          echo $sessionHandler->getMessage();
+          $sessionHandler->removeMessage();
+      } else {
+        echo "No message available.<br>";
+    }
 ?>
+
 
 <a href="./userregister.php">Home</a>
 <!DOCTYPE html>
@@ -73,19 +73,17 @@ if ($sessionHandler->hasMessage()) {
             <tr>
                 <th>S.NO.</th>
                 <th>USERNAME</th>
-                <th>EMAIL</th>
-                <th>PASSWORD</th>
+                <th>EMAILID</th>
+                <th>USERID</th>
                 <th>ACTION</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            
             // Fetch existing user data from the file
-            $jsonFilePath = "/opt/lampp/htdocs/suresh/project/Register/data.json";
+            $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
             $jsonString = file_get_contents($jsonFilePath);
             $userData = json_decode($jsonString, true) ?? [];
-
             // Change the loop to properly display user data
             if ($userData) {
                 $row = 1;
@@ -94,10 +92,10 @@ if ($sessionHandler->hasMessage()) {
                     echo '<td>' . $row . '</td>';
                     echo '<td>' . $user['username'] . '</td>';
                     echo '<td>' . $user['email'] . '</td>';
-                    echo '<td>' . $user['password'] . '</td>';  // Display masked password or omit this field
+                    echo '<td>' . $user['id'] . '</td>'; 
                     ?>
                     <td class="Action">
-                        <a class="Edit" href="edit_userregister_form.php?id=<?php echo $row; ?>">Active</a>
+                        <a class="Edit" href="updatedata.php?id=<?php echo $row; ?>">Active</a>
                         <a class="Delete" href="userremove.php?id=<?php echo $row; ?>">Delete</a>
                     </td>
                     <?php

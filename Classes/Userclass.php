@@ -1,35 +1,45 @@
 <?php
 
 class RegisterUser {
-    private $username;
-    private $email;
-    private $password; 
-    private $storage='data.json';
-    private $storage_user;
-    private $new_user;
+    public $username;
+    public $email;
+    public $id;
+    // public $storage = 'data.json';
+    // public $storage_user;
+     public $new_User;
 
-    public function __construct($username, $email, $password) {
+    public function __construct($username, $email, $id) {
         $this->username = $username;
         $this->email = $email;
-        $this->password =$password;
-         
-        $this-> storage_user =json_decode(file_get_contents($this->storage), true);
-        $this-> new_user=[
-        'username' => $this->username,
-        'email' => $this->email,
-        'password' => $this->password,
+        $this->id = $id;
+
+        // if(file_exists($this->storage)) {
+        //     $this->storage_user = json_decode(file_get_contents($this->storage), true);
+        // } else {
+        //     $this->storage_user = [];
+        // }
+        $this->new_User = [
+            'username' => $_POST['username'],
+            'email' => $_POST['email'],
+            'id' => $_POST['id'],
         ];
-        $this->insertUser();
+      
     }
-    public function insertUser(){
-        array_push($this->storage_user, $this->new_user);
-        if(file_put_contents($this->storage,json_encode($this->storage_user,JSON_PRETTY_PRINT))){
-             return true;
-         }
-            else{
-                return false;
-            }
-        }
-  }
+
+        public function getAllUsers() {
+                $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
+                $jsonString = file_get_contents($jsonFilePath);
+                $userData = json_decode($jsonString, true) ?? [];
+
+                // Add the new user to the existing data
+                $userData[] = $this->new_User;
+
+                // Write the updated data back to the JSON file
+                file_put_contents($jsonFilePath, json_encode($userData, JSON_PRETTY_PRINT));
+                return true;
+                //header("Location:./userlist.php");
+            } 
+            
+}
 
 ?>

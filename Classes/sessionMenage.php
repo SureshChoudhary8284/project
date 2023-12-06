@@ -86,6 +86,7 @@ class SessionManager
     {
         unset($_SESSION['message']);
     }
+    
 
 }
 ?>

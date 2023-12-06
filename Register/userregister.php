@@ -17,17 +17,13 @@
         form {
             width: 80%;
             text-align: center;
-            height: 350px;
+            height: 400px;
             border: 2px solid brown;
             border-radius: 22px;
             margin-top: 10%;
             padding: 20px;
         }
 
-        form label {
-            display: block;
-            margin-bottom: 5px;
-        }
 
         .input_field {
             margin-top: 10px;
@@ -48,17 +44,16 @@
         }
 
         .message {
-            margin-top: 21px;
+            margin-top: 20px;
             text-align: center;
+           color:orange;
         }
 
         h2 {
             text-align: center;
+            color: greenyellow;
         }
 
-        .password-toggle {
-            cursor: pointer;
-        }
         
     </style>
 </head>
@@ -73,30 +68,28 @@
         }
         ?>
     </div>
-    <form id="RegisterPage" action="./Register_control.php" method="post">
-        <h2>Registration page</h2>
-        <div>
-            <label for="user">USERNAME :</label>
-            <input class="input_field" type="text" name="username" id="user" placeholder="Full Name">
-        </div><br>
-
-        <div>
-            <label for="email">EMAILID :</label>
-            <input class="input_field" type="email" name="email" id="email" placeholder="Email ID">
-        </div><br>
-
-        <div>
-            <label for="password">PASSWORD :</label>
-            <input class="input_field password-toggle" type="password" name="password" id="password" placeholder="Password">
-        </div><br>
-
-        <button class="submit_btn" type="submit" name="Registration" id="Registration" value="Registration">Registration</button>
-        
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+</head>
+<body>
+    <h2>User Registration</h2>
+    <form method="POST" action="./Register_control.php">
+        <label   for="username">USERNAME:</label>
+        <input class="input_field" type="text" name="username" >
+        <br><br><br>
+        <label for="email">EMAILID:</label>
+        <input class="input_field"  type="email" name="email" >
+        <br><br><br>
+        <label for="id">USERID:</label>
+        <input class="input_field"  type="text" name="id" >
+        <br><br><br>
+        <button class="submit_btn " type="submit" name="submit">Register</button>
     </form>
 </body>
-
-
 </html>
-
-
 

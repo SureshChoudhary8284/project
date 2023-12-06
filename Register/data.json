@@ -1,7 +1,22 @@
 [
     {
-        "username": "JohnDoe",
-        "email": "john@example.com",
-        "password": "password123"
+        "username": "raam",
+        "email": "Radhe@gmail.com",
+        "id": "0123"
+    },
+    {
+        "username": "Radhe",
+        "email": "Radhe@gmail.com",
+        "id": "Radhe0123"
+    },
+    {
+        "username": "ram",
+        "email": "raam@gmail.com",
+        "id": "ram012134"
+    },
+    {
+        "username": "RAM",
+        "email": "ram@gmail.com",
+        "id": "0123"
     }
 ]
