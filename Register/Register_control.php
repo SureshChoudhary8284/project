@@ -10,16 +10,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Basic form validation
     if (empty($username) || empty($email) || empty($id)) {
         // Set error message in session
-        $sessionHandler->setError("All fields are required.");
+        $sessionHandler->setError("<b>All fields are required.</b>");
         // Redirect back to the registration page
         header('Location:./userregister.php');
         exit;
     } 
-   
+    if($Register->exist($id)){
+        $sessionHandler->setError("<b>user details .$id. alread exist.</b>");
+        // Redirect back to the registration page
+        header('Location:./userregister.php');
+        exit;
+    }
     if($Register->getAllUsers()){
-        $sessionHandler->setMessage('Successfully registered');
-        header("Location:./userlist.php");
-
+        $sessionHandler->setMessage( '<center><b> Successfully registered </b></center>');
+        header("Location:./dashboard.php");
         exit();
     }    
 }
