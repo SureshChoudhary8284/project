@@ -1,49 +1,31 @@
 <?php
 require_once(dirname(__FILE__, 2) . '/bootstrap.php');
 
-    // Handle user removal based on ID
-
-    $userIdToRemove = $_GET['id'];
-
-    // Fetch existing user data from the file
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
+    $userId = $_GET["id"];
+  
+    // Load existing user data
     $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
     $jsonString = file_get_contents($jsonFilePath);
     $userData = json_decode($jsonString, true) ?? [];
 
-    // Find the index of the user with the provided ID
-    $userIndex = findUserIndexById($userData, $userIdToRemove);
+    // Find and remove the user with the specified ID
+    $updatedUserData = array_filter($userData, function ($user) use ($userId) {
+        return $user["id"] != $userId;
+    });
 
-    if ($userIndex == false) {
-        // Remove the user from the array
-        unset($userData[$userIndex]);
+    // Save the updated user data back to the file
+    file_put_contents($jsonFilePath, json_encode(array_values($updatedUserData)));
 
-        // Reindex the array to ensure consecutive numeric keys
-        $userData = array_values($userData);
-
-        // Write the updated data back to the JSON file
-        file_put_contents($jsonFilePath, json_encode($userData, JSON_PRETTY_PRINT));
-
-        // Set a success message in the session
-        $sessionHandler->setMessage('User Id remove Successfully');
-    } else {
-        // Set an error message in the session
-        $sessionHandler->setMessage('User not found or unable to remove');
-    }
-
-    // Redirect to the user listing page after setting the session message
-    header("Location:./userlist.php");
+    // session success message
+    $sessionHandler->setError('<center>User with ID $userId deleted successfully.</center>');
+    header("Location:./dashboard.php");
     exit();
-
-
-// Function to find the index of a user by ID
-function findUserIndexById($userData, $userId)
-{
-    foreach ($userData as $index => $user) {
-        if ($user['id'] == $userId) {
-            return $index;
-        }
-    }
-    return false;
+} else {
+    // session if the request method is not GET or if the ID is not set
+    $sessionHandler->setError('<center>Invalid userid removed.</center>');
+    header("Location:./dashboard.php");
+exit();
 }
-?>
 
+?>

@@ -8,5 +8,4 @@ require_once(dirname(__FILE__).'/Classes/Userclass.php');
 $checker = new Adminlogin('admin', '1234');
 $sessionHandler = new SessionManager();
 $Register= new RegisterUser($username, $email, $id);
-//$Register= new RegisterUser('/Register/data.json');
 ?>

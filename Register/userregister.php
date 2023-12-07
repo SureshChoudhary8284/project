@@ -17,7 +17,7 @@
         form {
             width: 80%;
             text-align: center;
-            height: 400px;
+            height: 350px;
             border: 2px solid brown;
             border-radius: 22px;
             margin-top: 10%;
@@ -44,17 +44,24 @@
         }
 
         .message {
-            margin-top: 20px;
             text-align: center;
-           color:orange;
+            color:orange;
+            margin-left: 10%;
+            margin-right: 10%;
+            font-style: bold;
+            font-size: 20px;
+            background-color:lightgray;
         }
 
         h2 {
             text-align: center;
-            color: greenyellow;
+            color:blueviolet;
+            border: 1px solid black;
+            border-radius: 20px;
+            margin-left:  14% ; 
+            margin-right:  14% ;
+            background-color: lightgoldenrodyellow;
         }
-
-        
     </style>
 </head>
 
@@ -81,13 +88,13 @@
     <form method="POST" action="./Register_control.php">
         <label   for="username">USERNAME:</label>
         <input class="input_field" type="text" name="username" >
-        <br><br><br>
+        <br><br>
         <label for="email">EMAILID:</label>
         <input class="input_field"  type="email" name="email" >
-        <br><br><br>
+        <br><br>
         <label for="id">USERID:</label>
         <input class="input_field"  type="text" name="id" >
-        <br><br><br>
+        <br><br>
         <button class="submit_btn " type="submit" name="submit">Register</button>
     </form>
 </body>
