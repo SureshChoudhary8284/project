@@ -1,52 +1,37 @@
 [
     {
-        "username": "haridas",
-        "email": "haridas1@gmail.com",
-        "id": "haridas123"
+        "username": "Ram",
+        "email": "ram@gmail.com",
+        "id": "222"
     },
     {
-        "username": "Radhekrishna11",
-        "email": "Radhekrishna@gmail.com",
-        "id": "Radhekrishna01234"
+        "username": "Ram33",
+        "email": "ram333@gmail.com",
+        "id": "333"
     },
     {
-        "username": "admin",
-        "email": "admin@gmail.com",
-        "id": "admin"
+        "username": "ram",
+        "email": "Ram555@gmail.com",
+        "id": "555"
     },
     {
-        "username": "Kalidas1",
-        "email": "kalidas8284@gmal.com",
-        "id": "kalidas0123"
+        "username": "ram",
+        "email": "ram11@gmail.com",
+        "id": "888"
     },
     {
-        "username": "Vaibhav8284",
-        "email": "Vaibhav8085@gmail.com",
-        "id": "Vaibhav"
+        "username": "ram",
+        "email": "ram11@gmail.com",
+        "id": "999"
     },
     {
-        "username": "radheshyamji",
-        "email": "radhe@gmail.com",
-        "id": "ramm"
-    },
-    {
-        "username": "Ramraj",
-        "email": "ramraj@gmail.com",
-        "id": "ramraj"
-    },
-    {
-        "username": "Vaibhav",
-        "email": "Vaibhav@gmail.com",
-        "id": "123"
-    },
-    {
-        "username": "RAM",
+        "username": "ram",
         "email": "Ram@gmail.com",
-        "id": "Ram"
+        "id": "987"
     },
     {
-        "username": "Rohit8284",
-        "email": "Rohit8284@gmail.com",
-        "id": "8839"
+        "username": "admin1",
+        "email": "admin@gmail.com",
+        "id": "789"
     }
 ]

@@ -67,8 +67,6 @@
             font-weight: bold;
             border-radius: 15px;
             font-size: 15px;
-            
-
         }
         .Delete {
             color: black;
@@ -84,7 +82,7 @@
     </style>
 </head>
 <body>
-    <div class="btnMessage"> 
+<div class="btnMessage"> 
         <a href="./userregister.php" class="btnlink">USER_REGISTER</a>
         <a href="./dashboard.php" class="registercls">REGISTRATION</a>
         <a href="../logout.php" class="btn">LOGOUT</a>
@@ -96,7 +94,6 @@
             echo $sessionHandler->getError();
             $sessionHandler->removeError();
         }
-
         if ($sessionHandler->hasMessage()) {
             echo $sessionHandler->getMessage();
             $sessionHandler->removeMessage();
@@ -116,46 +113,44 @@
             </tr>
         </thead>
         <tbody>
-            <?php
-            require_once(dirname(__FILE__, 2) . '/bootstrap.php');
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editUserId'])) {
-                // Handle form submission to update user data
-                $editUserId = $_POST['editUserId'];
-                $editUsername = $_POST['editUsername'];
-                $editEmail = $_POST['editEmail'];
-                // Fetch the existing user data
-                $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
-                $jsonString = file_get_contents($jsonFilePath);
-                $userData = json_decode($jsonString, true) ?? [];
-                // Find and update the user data
-                foreach ($userData as &$user) {
-                    if ($user['id'] == $editUserId) {
-                        $user['username'] = $editUsername;
-                        $user['email'] = $editEmail;
-                        break;
-                    }   
-                }
-                // Write the updated data back to the JSON file
-                file_put_contents($jsonFilePath, json_encode($userData, JSON_PRETTY_PRINT));
+        <?php
+        require_once(dirname(__FILE__, 2) . '/bootstrap.php'); 
+        // Fetch the existing user data
+        $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
+        $jsonString = file_get_contents($jsonFilePath);
+        $userData = json_decode($jsonString, true) ?? [];
 
-                $row = 1; // Initialize $row outside the loop
-                if($user['id'] == $editUserId) {
-                    echo '<tr>';
-                    echo '<td>' . $row . '</td>';
-                    echo '<td>' . $user['username'] . '</td>';
-                    echo '<td>' . $user['email'] . '</td>';
-                    echo '<td>' . $user['id'] . '</td>';
-                    ?>
-                    <td class="Action">
-                        <a class="Edit" href="edituser.php?action=edit&id=<?php echo $user['id']; ?>">Edit</a>
-                        <a class="Delete" href="userremove.php?id=<?php echo $user['id']; ?>">Delete</a>
-                    </td>
-                    <?php
-                    echo '</tr>';
-                    $row++;
-                }
+        // Iterate through user data and update email if conditions match
+        foreach ($userData as &$user) {
+            if ($user['id'] == $userid ){
+                 $user['username'] = $userUsername;
+                $user['email'] = $email;
+                break;
             }
-            ?>
+        }
+        // Display user details
+        if (!empty($userData)) {
+            $row = 1;
+            if($user){
+                echo '<tr>';
+                echo '<td>' . $row . '</td>';
+                echo '<td>' . $user['username'] . '</td>';
+                echo '<td>' . $user['email'] . '</td>';
+                echo '<td>' . $user['id'] . '</td>';
+                ?>
+                <td class="Action">
+                    <a class="Edit" href="edituser.php?action=edit&id=<?php echo $user['id']; ?>">Edit</a>
+                    <a class="Delete" href="userremove.php?id=<?php echo $user['id']; ?>">Delete</a>
+                </td>
+                </tr>
+                <?php
+                $row++;
+            }
+            
+        } else {
+            echo '<tr><td colspan="5">No user data available.</td></tr>';
+        }
+        ?>
         </tbody>
     </table>
 </body>
