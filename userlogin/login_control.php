@@ -1,33 +1,43 @@
 <?php
 
-require_once(dirname(__FILE__,2).'/bootstrap.php');
-// echo "test";
-if($_SERVER["REQUEST_METHOD"] !== 'POST'){
-    header('location:../userindex.php');
-}
+require_once(dirname(__FILE__, 2) . '/bootstrap.php');
 
-$username = trim($_POST['username']);
-$password = trim($_POST['password']);
+// Check if the request method is POST
+if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
-if(empty($username)){
-    $sessionHandler->setError('Enter Your Name');
-    header('location:../userindex.php');
+    // Validate inputs
+    if (empty($username) || empty($password)) {
+        $sessionHandler->setError('Username and password are required.');
+        header('Location: ../userindex.php');
+        exit();
+    }
+    // Check admin login
+    if ($adminLogin->matchAdmin($username, $password)) {
+        $sessionHandler->setAuthId(1); // Use a different identifier for admin
+        $sessionHandler->setAuthUser($username);
+        $sessionHandler->setMessage('Admin login successfully ! ' . $username);
+        header("Location: ../adminpage.php");
+        exit();
+    } elseif ($userLogin->matchUser($username, $password)) {
+        // User login successful
+        $sessionHandler->setAuthId(2); // Use a different identifier for user
+        $sessionHandler->setAuthUser($username);
+        $sessionHandler->setMessage('User login Successfully !  '  .$username);
+        header("Location: ../Register/userdetails.php");
+        exit();
+    } else {
+        // Invalid username or password
+        $sessionHandler->setError('Invalid username or password.');
+        header('Location: ../userindex.php');
+        exit();
+    }
+} else {
+    // Redirect for invalid request method
+    $sessionHandler->setError('Invalid Request Method');
+    header('Location: ../userindex.php');
     exit();
 }
-if(empty($password)){
-    $sessionHandler->setError('Enter Your Password');
-    header('location:../userindex.php');
-    exit();
-}
-if(!$checker->match($username,$password)){
-    $sessionHandler->setError('Invalid UserName And Password');
-    header('location:../userindex.php');
-    exit();
-}
 
-$sessionHandler->setAuthId(1);
-$sessionHandler->setAuthUser($username);
-$sessionHandler->setMessage('success');
-header("Location:../dashboard.php");
-exit();
 ?>

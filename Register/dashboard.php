@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +9,8 @@
 </head>
 <body>
     <div class="btnMessage"> 
-        <a href="./userregister.php" class="btnlink">HOME</a>
-        <a href="../userindex.php">USERLOGIN</a>
-        <a href="../logout.php" class="btn">LOGOUT</a>
+        <a href="./userregister.php" class="btnlink">USER_REGISTRATION</a>
+        <a href="../logout.php" class="logoutbtn">LOGOUT</a>
     </div>
     <div class="sessionMessage">
         <?php
@@ -31,18 +31,24 @@
             text-align: justify;
         
         }
+      
         .btnMessage{
             border: 1px solid black;
             border-radius: 20px;
             font-style: italic;
             background-color: lightgoldenrodyellow;
             padding: 5px;
-            margin: 5px;
+         
         }
         .btnlink{
             color: blue;
         }
-
+      
+        .logoutbtn{
+            margin-left:78%;
+            color: blue;
+            
+        }  
         thead {
             background-color: lightgrey;
             color: lightseagreen;
@@ -58,10 +64,7 @@
             font-weight: 800;
             padding: 8px;
         }
-        .btn{
-            margin-left: 90%;
-            color:blue;
-        }
+      
 
         .Action {
             word-spacing: 12px;

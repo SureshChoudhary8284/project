@@ -18,7 +18,7 @@ class RegisterUser {
         ];
       
     }
-             public function exist($id){
+    public function exist($id){
                 $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
                 $jsonString = file_get_contents($jsonFilePath);
                 $userData = json_decode($jsonString, true) ?? [];
@@ -30,21 +30,15 @@ class RegisterUser {
                 return false;
 
              }
-        public function getAllUsers() {
+    public function getAllUsers() {
                 $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
                 $jsonString = file_get_contents($jsonFilePath);
                 $userData = json_decode($jsonString, true) ?? [];
-
                 if($user['id'] =$this->id){
                     return true;
-
                 }
-
                 // Add the new user to the existing data
                 $userData[] = $this->new_User;
-
-
-
                 // Write the updated data back to the JSON file
                 file_put_contents($jsonFilePath, json_encode($userData, JSON_PRETTY_PRINT));
                 return true;

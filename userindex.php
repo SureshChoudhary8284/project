@@ -1,7 +1,7 @@
 <?php
 require('bootstrap.php');
 if($sessionHandler->isAuthExists()) {
-    header("Location:dashboard.php");
+    header("Location:adminpage.php");
     exit();
 }
 ?>
@@ -10,30 +10,30 @@ if($sessionHandler->isAuthExists()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login page</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Login Page</title>
+    <!-- Remove unused jQuery script -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
     <style>
-        * {
+        body {
             max-width: 400px;
             margin: auto;
-
         }
 
         form {
-            width: 500px;
+            width: 80%;
             text-align: center;
             height: 300px;
             border: 2px solid grey;
             border-radius: 22px;
+            margin-top: 50px;
         }
 
         .input_field {
             margin-top: 20px;
             padding-left: 20px;
             border-radius: 12px;
-            width: 200px;
+            width: 80%;
             height: 30px;
             color: red;
         }
@@ -41,17 +41,25 @@ if($sessionHandler->isAuthExists()) {
         .submit_btn {
             width: 80px;
             height: 35px;
-            background-color:azure;
+            background-color: azure;
             color: black;
             border: 2px solid black;
             border-radius: 20px;
-
+            margin-top: 20px;
         }
 
         .message {
-            margin-top: 100px;
+            margin-top: 20px;
+            text-align: center;
+            color: #ff0000;
+            margin-left: 10%;
+            margin-right: 10%;
+            font-style: bold;
+            font-size: 18px;
+            background-color: lightgrey;
         }
-        h2{
+
+        h2 {
             text-align: center;
         }
     </style>
@@ -73,17 +81,17 @@ if($sessionHandler->isAuthExists()) {
     </div>
     <form id="loginPage" action="./userlogin/login_control.php" method="post">
         <h2>Login Page</h2>
-        <div>ADMINNAME :
-            <input class="input_field" type="text" name="username" id="user" placeholder="username" >
+        <div>
+            ADMINNAME :
+            <input class="input_field" type="text" name="username" id="user" placeholder="Username" >
         </div><br><br>
-        <div>PASSWORD :
+        <div>
+            PASSWORD :
             <input class="input_field" type="password" name="password" id="password" placeholder="Password" >
-
         </div><br><br>
         <div>
             <button class="submit_btn" type="submit" name="Login" id="login" value="Login">LOGIN</button>
         </div>
     </form>
 </body>
-
 </html>
