@@ -1,5 +1,4 @@
 <?php
-
 class AdminLogin
 {
     private string $adminUsername;
@@ -21,13 +20,12 @@ class AdminLogin
         return ($this->adminUsername === $inputUsername) && ($this->adminPassword === $inputPassword);
     }
 }
-
 class UserLogin
 {
-    private $userUsername;
+    private string $userUsername;
     private $userid;
 
-    public function __construct($userUsername, $userid)
+    public function __construct(string $userUsername, $userid)
     {
         $this->userUsername = $userUsername;
         $this->userid = $userid;
@@ -43,33 +41,19 @@ class UserLogin
         return $this->userid;
     }
 
-    public function matchUser($inputUsername, $inputUserId): bool
+    public function matchUser(string $inputUsername, $inputUserId): bool
     {
         $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
+        $jsonString = file_get_contents($jsonFilePath);
+        $userData = json_decode($jsonString, true);
         
-        try {
-            $jsonString = file_get_contents($jsonFilePath);
-
-            if ($jsonString === false) {
-                throw new Exception("Failed to read JSON file.");
+        foreach ($userData as $user) {
+            if ($user['id'] === $inputUserId && $user['username'] === $inputUsername) {
+                return true; // Match found
             }
-
-            $userData = json_decode($jsonString, true);
-
-            if ($userData === null) {
-                throw new Exception("Failed to decode JSON data.");
-            }
-
-            foreach ($userData as $user) {
-                if ($user['username'] === $inputUsername && $user['id'] == $inputUserId) {
-                    return true; // Match found
-                }
-            }
-        } catch (Exception $e) {
-            // Handle exceptions, log errors, or take appropriate action
-            return false;
         }
 
         return false; // No match found
     }
 }
+?>

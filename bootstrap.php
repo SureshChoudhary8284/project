@@ -15,7 +15,7 @@ $email = ''; // Define or retrieve the email
 $id = ''; // Define or retrieve the user ID
 
 $adminLogin = new AdminLogin('admin', '1234');
-$userLogin = new UserLogin($userUsername, $userid);
+$userLogin = new UserLogin($username, $userid);
 $sessionHandler = new SessionManager();
 $Register = new RegisterUser($username, $email, $id);
 ?>

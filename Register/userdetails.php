@@ -8,7 +8,6 @@
     <style>
         #table {
             text-align: justify;
-        
         }
         .btnMessage{
             border: 1px solid black;
@@ -48,7 +47,6 @@
 
         .Action {
             word-spacing: 12px;
-        
         }
         .sessionMessage{
             text-align: center;
@@ -83,55 +81,54 @@
 </head>
 <body>
 <div class="btnMessage"> 
-        <a href="./userregister.php" class="btnlink">USER_REGISTER</a>
-        <a href="./dashboard.php" class="registercls">REGISTRATION</a>
-        <a href="../logout.php" class="btn">LOGOUT</a>
-    </div>
-    <div class="sessionMessage">
-        <?php
+    <a href="./userregister.php" class="btnlink">USER_REGISTER</a>
+    <a href="./dashboard.php" class="registercls">REGISTRATION</a>
+    <a href="../logout.php" class="btn">LOGOUT</a>
+</div>
+<div class="sessionMessage">
+    <?php
+    require_once(dirname(__FILE__, 2) . '/bootstrap.php');
+    if ($sessionHandler->hasError()) {
+        echo $sessionHandler->getError();
+        $sessionHandler->removeError();
+    }
+    if ($sessionHandler->hasMessage()) {
+        echo $sessionHandler->getMessage();
+        $sessionHandler->removeMessage();
+    }
+    ?>
+</div>
+<h2>User Listing Table</h2>
+<table id="table" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>S.NO.</th>
+            <th>USERNAME</th>
+            <th>EMAILID</th>
+            <th>USERID</th>
+            <th>ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php
         require_once(dirname(__FILE__, 2) . '/bootstrap.php');
-        if ($sessionHandler->hasError()) {
-            echo $sessionHandler->getError();
-            $sessionHandler->removeError();
-        }
-        if ($sessionHandler->hasMessage()) {
-            echo $sessionHandler->getMessage();
-            $sessionHandler->removeMessage();
-        }
-        ?>
-    </div>
-
-    <h2>User Listing Table</h2>
-    <table id="table" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>S.NO.</th>
-                <th>USERNAME</th>
-                <th>EMAILID</th>
-                <th>USERID</th>
-                <th>ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-        require_once(dirname(__FILE__, 2) . '/bootstrap.php'); 
+        
         // Fetch the existing user data
         $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
         $jsonString = file_get_contents($jsonFilePath);
         $userData = json_decode($jsonString, true) ?? [];
 
-        // Iterate through user data and update email if conditions match
-        foreach ($userData as &$user) {
-            if ($user['id'] == $userid ){
-                 $user['username'] = $userUsername;
-                $user['email'] = $email;
-                break;
-            }
+        $row = 1; // Initialize $row outside the loop
+        $userDetails=[];
+        foreach ($userData as $user) {
+            $userDetails=[
+                $user['id']=>$userid,
+                $user['username']=>$username,
+                $user['email']=>$eamil,
+            ];
         }
-        // Display user details
-        if (!empty($userData)) {
-            $row = 1;
-            if($user){
+        if (!empty($userDetails)) {
+                // Display user data
                 echo '<tr>';
                 echo '<td>' . $row . '</td>';
                 echo '<td>' . $user['username'] . '</td>';
@@ -142,16 +139,16 @@
                     <a class="Edit" href="edituser.php?action=edit&id=<?php echo $user['id']; ?>">Edit</a>
                     <a class="Delete" href="userremove.php?id=<?php echo $user['id']; ?>">Delete</a>
                 </td>
-                </tr>
                 <?php
+                echo '</tr>';
                 $row++;
             }
-            
-        } else {
+        else {
             echo '<tr><td colspan="5">No user data available.</td></tr>';
         }
-        ?>
-        </tbody>
-    </table>
+    ?>        
+        
+    </tbody>
+</table>
 </body>
 </html>
