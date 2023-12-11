@@ -1,37 +1,22 @@
 [
     {
-        "username": "Ram",
+        "username": "Arya",
+        "email": "Aryan@gmail.com",
+        "id": "000"
+    },
+    {
+        "username": "ram",
         "email": "ram@gmail.com",
+        "id": "111"
+    },
+    {
+        "username": "ram",
+        "email": "raam@gmail.com",
         "id": "222"
     },
     {
-        "username": "Ram33",
-        "email": "ram333@gmail.com",
+        "username": "vinayak",
+        "email": "vinayak@gmail.com",
         "id": "333"
-    },
-    {
-        "username": "ram",
-        "email": "Ram555@gmail.com",
-        "id": "555"
-    },
-    {
-        "username": "ram",
-        "email": "ram11@gmail.com",
-        "id": "888"
-    },
-    {
-        "username": "ram",
-        "email": "ram11@gmail.com",
-        "id": "999"
-    },
-    {
-        "username": "ram",
-        "email": "Ram@gmail.com",
-        "id": "987"
-    },
-    {
-        "username": "admin1",
-        "email": "admin@gmail.com",
-        "id": "789"
     }
 ]

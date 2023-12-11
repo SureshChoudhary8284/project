@@ -128,8 +128,8 @@
                 $jsonString = file_get_contents($jsonFilePath);
                 $userData = json_decode($jsonString, true) ?? [];
                 // Find and update the user data
-                foreach ($userData as &$user) {
-                    if ($user['id'] == $editUserId) {
+                foreach($userData as &$user) {
+                    if($user['id'] == $editUserId) {
                         $user['username'] = $editUsername;
                         $user['email'] = $editEmail;
                         break;
@@ -137,9 +137,8 @@
                 }
                 // Write the updated data back to the JSON file
                 file_put_contents($jsonFilePath, json_encode($userData, JSON_PRETTY_PRINT));
-
                 $row = 1; // Initialize $row outside the loop
-                if($user['id'] == $editUserId) {
+                if($userData) {
                     echo '<tr>';
                     echo '<td>' . $row . '</td>';
                     echo '<td>' . $user['username'] . '</td>';

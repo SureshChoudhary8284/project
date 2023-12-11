@@ -59,7 +59,7 @@ if (!$sessionHandler->isAuthExists()) {
             <a href="./logout.php" class="btn">Logout</a>
         </div><hr>
     <div>
-        <h3>WELCOME </h3>
+        <h3>WELCOME</h3>
     </div>
 </body>
 </html>

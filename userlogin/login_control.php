@@ -13,31 +13,30 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         header('Location: ../userindex.php');
         exit();
     }
+
     // Check admin login
     if ($adminLogin->matchAdmin($username, $password)) {
         $sessionHandler->setAuthId(1); // Use a different identifier for admin
         $sessionHandler->setAuthUser($username);
-        $sessionHandler->setMessage('Admin login successfully ! ' . $username);
+        $sessionHandler->setMessage('Admin login successfully! ' . $username);
         header("Location: ../adminpage.php");
-        exit();
+        exit(); // Exit after header
     } elseif ($userLogin->matchUser($username, $password)) {
         // User login successful
         $sessionHandler->setAuthId(2); // Use a different identifier for user
         $sessionHandler->setAuthUser($username);
-        $sessionHandler->setMessage('User login Successfully !  '  .$username);
+        $sessionHandler->setMessage('User login successfully! Welcome, ' . $username . '. User ID: ' . $password);
         header("Location: ../Register/userdetails.php");
-        exit();
+        exit(); // Exit after header
     } else {
         // Invalid username or password
         $sessionHandler->setError('Invalid username or password.');
         header('Location: ../userindex.php');
-        exit();
+        exit(); // Exit after header
     }
 } else {
     // Redirect for invalid request method
     $sessionHandler->setError('Invalid Request Method');
     header('Location: ../userindex.php');
-    exit();
+    exit(); // Exit after header
 }
-
-?>

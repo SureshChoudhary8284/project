@@ -2,6 +2,7 @@
 
 class SessionManager
 {
+ 
     public function isAuthExists(): bool
     {
         return !empty($_SESSION['id']);
@@ -87,6 +88,9 @@ class SessionManager
         unset($_SESSION['message']);
     }
     
-
+    public function getAuthId() {
+        // Retrieve the authenticated user ID from the session
+        return isset($_SESSION['auth_id']) ? $_SESSION['auth_id'] : null;
+    }
 }
 ?>
