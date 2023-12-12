@@ -36,7 +36,6 @@ if (!$sessionHandler->isAuthExists()) {
         h3{
             font-style: bold;
             font-size: 20px;
-        
         }
     </style>
 </head>

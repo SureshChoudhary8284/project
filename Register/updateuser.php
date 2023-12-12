@@ -124,7 +124,7 @@
                 $editUsername = $_POST['editUsername'];
                 $editEmail = $_POST['editEmail'];
                 // Fetch the existing user data
-                $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
+                $jsonFilePath = '../Register/data.json';
                 $jsonString = file_get_contents($jsonFilePath);
                 $userData = json_decode($jsonString, true) ?? [];
                 // Find and update the user data

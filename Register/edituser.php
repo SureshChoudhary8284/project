@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     $editUserId = $_GET['id'];
 
     // Fetch the user data for the specified ID
-    $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
+    $jsonFilePath = '../Register/data.json';
     $jsonString = file_get_contents($jsonFilePath);
     $userData = json_decode($jsonString, true) ?? [];
 

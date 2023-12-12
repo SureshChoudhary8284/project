@@ -43,7 +43,7 @@ class UserLogin
 
     public function matchUser(string $inputUsername, $inputUserId): bool
     {
-        $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
+        $jsonFilePath = '../Register/data.json';
         $jsonString = file_get_contents($jsonFilePath);
         $userData = json_decode($jsonString, true);
         
@@ -56,4 +56,5 @@ class UserLogin
         return false; // No match found
     }
 }
+
 ?>

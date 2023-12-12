@@ -119,7 +119,7 @@
         <tbody>
             <?php
             // Fetch existing user data from the file
-            $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
+            $jsonFilePath = '../Register/data.json';
             $jsonString = file_get_contents($jsonFilePath);
             $userData = json_decode($jsonString, true) ?? [];
 
