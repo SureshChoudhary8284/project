@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         header('Location: ../userindex.php');
         exit();
     }
-
+ 
     // Check admin login
     if ($adminLogin->matchAdmin($username, $password)) {
         $sessionHandler->setAuthId(1); // Use a different identifier for admin

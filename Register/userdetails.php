@@ -114,36 +114,36 @@
         require_once(dirname(__FILE__, 2) . '/bootstrap.php');
         
         // Fetch the existing user data
-        $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
+        $jsonFilePath = '../Register/data.json';
         $jsonString = file_get_contents($jsonFilePath);
         $userData = json_decode($jsonString, true) ?? [];
 
+        $loggedInUserName = $sessionHandler->getAuthUser(); // Get the ID of the logged-in user
         $row = 1; // Initialize $row outside the loop
-        $userDetails=[];
-        foreach ($userData as $user) {
-            $userDetails=[
-                $user['id']=>$userid,
-                $user['username']=>$username,
-                $user['email']=>$eamil,
-            ];
-        }
-        if (!empty($userDetails)) {
-                // Display user data
-                echo '<tr>';
-                echo '<td>' . $row . '</td>';
-                echo '<td>' . $user['username'] . '</td>';
-                echo '<td>' . $user['email'] . '</td>';
-                echo '<td>' . $user['id'] . '</td>';
-                ?>
-                <td class="Action">
-                    <a class="Edit" href="edituser.php?action=edit&id=<?php echo $user['id']; ?>">Edit</a>
-                    <a class="Delete" href="userremove.php?id=<?php echo $user['id']; ?>">Delete</a>
-                </td>
-                <?php
-                echo '</tr>';
-                $row++;
+        if (!empty($userData)) {
+            foreach ($userData as $user) {
+                // print_r($user);
+                // die;
+                if ($user['username'] == $loggedInUserName ) {
+                    // Display user data only for the logged-in user
+                    echo '<tr>';
+                    echo '<td>' . $row . '</td>';
+                    echo '<td>' . $user['username'] . '</td>';
+                    echo '<td>' . $user['email'] . '</td>';
+                    echo '<td>' . $user['id'] . '</td>';
+                    ?>
+                    <td class="Action">
+                        <a class="Edit" href="edituser.php?action=edit&id=<?php echo $user['id']; ?>">Edit</a>
+                        <a class="Delete" href="userremove.php?id=<?php echo $user['id']; ?>">Delete</a>
+                    </td>
+                    <?php
+                    echo '</tr>';
+                    $row++;
+                    // Break the loop after displaying details for the logged-in user
+                    break;
+                }
             }
-        else {
+        } else {
             echo '<tr><td colspan="5">No user data available.</td></tr>';
         }
     ?>        

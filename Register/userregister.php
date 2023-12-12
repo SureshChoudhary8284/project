@@ -75,7 +75,7 @@
         }
         ?>
     </div>
-    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,6 +84,7 @@
     <title>User Registration</title>
 </head>
 <body>
+    
     <h2>User Registration</h2>
     <form method="POST" action="./Register_control.php">
         <label   for="username">USERNAME:</label>

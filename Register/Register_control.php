@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sessionHandler->setError("<b>All fields are required.</b>");
         // Redirect back to the registration page
         header('Location:./userregister.php');
-        exit;
+        exit();
     } 
     if($Register->exist($id)){
         $sessionHandler->setError("<b>user details .$id. alread exist.</b>");
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     if($Register->getAllUsers()){
-        $sessionHandler->setMessage( '<center><b> Successfully registered </b></center>');
+        $sessionHandler->setMessage('<center><b> Successfully registered </b></center>');
         header("Location:./dashboard.php");
         exit();
     }    

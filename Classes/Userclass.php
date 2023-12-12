@@ -19,7 +19,7 @@ class RegisterUser {
       
     }
     public function exist($id){
-                $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
+                $jsonFilePath = '../Register/data.json';
                 $jsonString = file_get_contents($jsonFilePath);
                 $userData = json_decode($jsonString, true) ?? [];
                 foreach ($userData as  $user) {
@@ -31,7 +31,7 @@ class RegisterUser {
 
              }
     public function getAllUsers() {
-                $jsonFilePath = '/opt/lampp/htdocs/suresh/project/Register/data.json';
+                $jsonFilePath = '../Register/data.json';
                 $jsonString = file_get_contents($jsonFilePath);
                 $userData = json_decode($jsonString, true) ?? [];
                 if($user['id'] =$this->id){
